@@ -5,6 +5,7 @@ import com.google.common.collect.Maps;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Metric {
@@ -17,7 +18,12 @@ public class Metric {
     private String json;
     private Long version;
 
-    public Metric(String name,String value,Map<String,String> tags){
+    public Metric(String name,Object value){
+        this(name,value,new HashMap<String,String>());
+
+    }
+
+    public Metric(String name,Object value,Map<String,String> tags){
         this.name = name;
         this.value = value;
         this.tags.putAll(tags);
